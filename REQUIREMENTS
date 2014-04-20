@@ -1,0 +1,26 @@
+Project Description
+
+A Pomodoro (http://pomodorotechnique.com/) style timer.
+
+Requirements
+
+A single page timer application with a count down timer function.
+
+The duration of the timer should be configurable.
+  * Experiment with different configuration methods,
+    * (e.g. select drop down box,
+    * or field for entering the value,
+    * or up and down arrow that adjust a value).
+
+There should be a place to put Notes to Self (sometimes called Task Reminder).
+
+There should be controls
+  * Pause
+  * Complete
+  * Abort
+
+No historical information will be kept (no backend)
+
+The product should be delivered in multiple, tagged, versions.
+
+Start with a minimum viable product.  The first product should be just a page that when loaded starts a 20 minute count down timer.
