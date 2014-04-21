@@ -3,7 +3,8 @@ var initialTime = Date.now();
 
 function checkTime(){
   var timeDifference = Date.now() - initialTime;
-  var formatted = convertTime(timeDifference);
+  var timeLeft = (20*60*1000) - timeDifference;  //fixme - hard coded 20min
+  var formatted = convertTime(timeLeft);
   //call back to html page
   document.getElementById('countdown').innerHTML = '' + formatted;
 }
