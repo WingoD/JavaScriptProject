@@ -2,11 +2,29 @@
 var initialTime = Date.now();
 var timeExpired = 0;
 var paused = 0;
+var timePausedAt = 0;
+var elapsedTime = 0;
 var timerTime = 20*60*1000;  //fixme - hard coded 20min
+
+function pause(){
+    paused = 1;
+    timePausedAt = Date.now();
+    document.getElementById("pauseButton").disabled = "disabled";
+    document.getElementById("resumeButton").disabled = "";
+}
+
+function resume(){
+    paused = 0;
+    var resumedTimerTime = Date.now();
+    elapsedTime += resumedTimerTime - timePausedAt;
+    document.getElementById("pauseButton").disabled = "";
+    document.getElementById("resumeButton").disabled = "disabled";
+}
+
 function checkTime(){
   if (paused == 1) {return;}
   if (timeExpired == 1) {return;}
-  var timeDifference = Date.now() - initialTime;
+  var timeDifference = Date.now() - initialTime - elapsedTime;
   var timeLeft = (timerTime) - timeDifference;
   var formatted = convertTime(timeLeft);
   //call back to html page
@@ -25,19 +43,6 @@ function convertTime(miliseconds) {
     return "00:00 Time is up."; 
     //"makes" time stop, need better solution maby
   }
-}
-
-function pause(){
-    paused = 1;
-    document.getElementById("pauseButton").disabled = "disabled";
-    document.getElementById("resumeButton").disabled = "";
-}
-
-
-function resume(){
-    paused = 0;
-    document.getElementById("pauseButton").disabled = "";
-    document.getElementById("resumeButton").disabled = "disabled";
 }
 // check time every 0.5 seconds
 window.setInterval(checkTime, 500);
