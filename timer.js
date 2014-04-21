@@ -1,11 +1,27 @@
 // set initial timer time
-var initialTime = Date.now();
+var started = 1;
+var initialTime = 0;
 var timeExpired = 0;
 var paused = 0;
 var aborted = 0;
 var timePausedAt = 0;
 var elapsedTime = 0;
 var timerTime = 20*60*1000;  //fixme - hard coded 20min
+
+function start(){
+  started = 0;
+  initialTime = Date.now();
+}
+function reset(){
+  started = 1;
+  initialTime = 0;
+  timeExpired = 0;
+  paused = 0;
+  aborted = 0;
+  timePausedAt = 0;
+  elapsedTime = 0;
+  timerTime = 20*60*1000;
+}
 
 function pause(){
     paused = 1;
@@ -27,6 +43,7 @@ function abort(){
 
 function checkTime(){
   if (paused == 1) {return;}
+  if (started == 1) {return;}
   if (timeExpired == 1) {return;}
   if (aborted == 1) {return;}
   var timeDifference = Date.now() - initialTime - elapsedTime;
