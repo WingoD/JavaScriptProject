@@ -22,4 +22,4 @@ function convertTime(miliseconds) {
   }
 }
 // check time every 0.1 seconds and it is broken, cannot stop once started
-window.setInterval(checkTime, 100);
+window.setInterval(checkTime, 500);
