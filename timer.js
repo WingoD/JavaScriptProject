@@ -12,6 +12,7 @@ function start(){
   started = 0;
   initialTime = Date.now();
 }
+
 function reset(){
   started = 1;
   initialTime = 0;
@@ -21,6 +22,10 @@ function reset(){
   timePausedAt = 0;
   elapsedTime = 0;
   timerTime = 20*60*1000;
+  document.getElementById("pauseButton").disabled = "";
+  document.getElementById("resumeButton").disabled = "disabled";
+  document.getElementById('countdown').innerHTML = '';
+
 }
 
 function pause(){
@@ -39,6 +44,7 @@ function resume(){
 }
 function abort(){
   aborted = 1;
+  document.getElementById('countdown').innerHTML = "Aborted";
 }
 
 function checkTime(){
