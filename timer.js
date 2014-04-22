@@ -83,7 +83,7 @@ function convertTime(miliseconds) {
   }
   else{
     timeExpired = 1;
-    return;
+    return "Time Expired";
   }
 }
 // check time every 0.5 seconds
