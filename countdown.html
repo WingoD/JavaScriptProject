@@ -3,6 +3,11 @@
 	</script>
 </head>
 
+<form onsubmit="checkForm()">
+Task Reminder: <input id="taskReminder" type="text" name="taskReminder"><br>
+Timer Length: <input id="timerLength" placeholder="20" type="text" name="timerLength"> in minutes.<br>
+<input type="submit" value="Submit" onsubmit="task()">
+</form>
 <input id="startButton" type="button" value="Start" onclick="start()" />
 <input id="pauseButton" type="button" value="Pause" onclick="pause()" />
 <input id="resumeButton" type="button" value="Resume" onclick="resume()" disabled="disabled" />

@@ -6,7 +6,14 @@ var paused = 0;
 var aborted = 0;
 var timePausedAt = 0;
 var elapsedTime = 0;
-var timerTime = 20*60*1000;  //fixme - hard coded 20min
+var timeInput = .5;
+var timerTime = timeInput*60*1000;
+var taskReminderText = "Time is up."
+
+function task() {
+  taskReminderText = document.getElementById("taskReminder").value;
+  timeInput = document.getElementById("timerLenght").value;
+}
 
 function start(){
   started = 0;
@@ -21,7 +28,8 @@ function reset(){
   aborted = 0;
   timePausedAt = 0;
   elapsedTime = 0;
-  timerTime = 20*60*1000;
+  timeInput = .5;
+  timerTime = timeInput*60*1000;
   document.getElementById("pauseButton").disabled = "";
   document.getElementById("resumeButton").disabled = "disabled";
   document.getElementById('countdown').innerHTML = '';
@@ -68,7 +76,7 @@ function convertTime(miliseconds) {
     return ("0" + minutes).slice(-2) + ':' + ("0" + seconds).slice(-2);
   }
   else{
-    return "Time is up.";
+    return taskReminderText;
     timeExpired = 1; 
   }
 }
