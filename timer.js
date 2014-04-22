@@ -12,13 +12,13 @@ var taskReminderText = "Time is up."
 function task() {
   taskReminderText = document.getElementById("taskReminder").value;
   timeInput = document.getElementById("timerLength").value;
-  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    task'
+  //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    task'      //debuging tool
 }
 
 function start(){
   started = 0;
   initialTime = Date.now();
-  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    start'
+  //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    start'      //debuging tool
 }
 
 function reset(){
@@ -34,7 +34,7 @@ function reset(){
   document.getElementById("pauseButton").disabled = "";
   document.getElementById("resumeButton").disabled = "disabled";
   document.getElementById('countdown').innerHTML = '';
-  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    reset'
+  //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    reset'      //debuging tool
 
 }
 
@@ -43,7 +43,7 @@ function pause(){
     timePausedAt = Date.now();
     document.getElementById("pauseButton").disabled = "disabled";
     document.getElementById("resumeButton").disabled = "";
-    document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    pause'
+    //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    pause'      //debuging tool
 }
 
 function resume(){
@@ -52,12 +52,12 @@ function resume(){
     elapsedTime += resumedTimerTime - timePausedAt;
     document.getElementById("pauseButton").disabled = "";
     document.getElementById("resumeButton").disabled = "disabled";
-    document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    resume'
+    //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    resume'      //debuging tool
 }
 function abort(){
   aborted = 1;
   document.getElementById('countdown').innerHTML = "Aborted";
-  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    abort'
+  //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    abort'      //debuging tool
 }
 
 function checkTime(){
@@ -70,7 +70,7 @@ function checkTime(){
   var formatted = convertTime(timeLeft);
   //call back to html page
   document.getElementById('countdown').innerHTML = '' + formatted + "   " + taskReminderText;
-  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    checkTime'
+  //document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    checkTime'      //debuging tool
 }
 
 // calculate time 
