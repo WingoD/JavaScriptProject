@@ -7,17 +7,18 @@ var aborted = 0;
 var timePausedAt = 0;
 var elapsedTime = 0;
 var timeInput = .5;
-var timerTime = timeInput*60*1000;
 var taskReminderText = "Time is up."
 
 function task() {
   taskReminderText = document.getElementById("taskReminder").value;
-  timeInput = document.getElementById("timerLenght").value;
+  timeInput = document.getElementById("timerLength").value;
+  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    task'
 }
 
 function start(){
   started = 0;
   initialTime = Date.now();
+  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    start'
 }
 
 function reset(){
@@ -33,6 +34,7 @@ function reset(){
   document.getElementById("pauseButton").disabled = "";
   document.getElementById("resumeButton").disabled = "disabled";
   document.getElementById('countdown').innerHTML = '';
+  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    reset'
 
 }
 
@@ -41,6 +43,7 @@ function pause(){
     timePausedAt = Date.now();
     document.getElementById("pauseButton").disabled = "disabled";
     document.getElementById("resumeButton").disabled = "";
+    document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    pause'
 }
 
 function resume(){
@@ -49,10 +52,12 @@ function resume(){
     elapsedTime += resumedTimerTime - timePausedAt;
     document.getElementById("pauseButton").disabled = "";
     document.getElementById("resumeButton").disabled = "disabled";
+    document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    resume'
 }
 function abort(){
   aborted = 1;
   document.getElementById('countdown').innerHTML = "Aborted";
+  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    abort'
 }
 
 function checkTime(){
@@ -61,10 +66,11 @@ function checkTime(){
   if (timeExpired == 1) {return;}
   if (aborted == 1) {return;}
   var timeDifference = Date.now() - initialTime - elapsedTime;
-  var timeLeft = (timerTime) - timeDifference;
+  var timeLeft = (timeInput*60*1000) - timeDifference;
   var formatted = convertTime(timeLeft);
   //call back to html page
-  document.getElementById('countdown').innerHTML = '' + formatted;
+  document.getElementById('countdown').innerHTML = '' + formatted + "   " + taskReminderText;
+  document.getElementById('countdown').innerHTML = document.getElementById('countdown').innerHTML + '    checkTime'
 }
 
 // calculate time 
@@ -76,8 +82,8 @@ function convertTime(miliseconds) {
     return ("0" + minutes).slice(-2) + ':' + ("0" + seconds).slice(-2);
   }
   else{
-    return taskReminderText;
-    timeExpired = 1; 
+    timeExpired = 1;
+    return;
   }
 }
 // check time every 0.5 seconds
