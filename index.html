@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Really cool timer thingy, baby</title>
+    <script type="text/javascript" src="angular-1.2.2.min.js"></script>
+    <script type="text/javascript" src="timer.js"></script>
+</head>
+<body data-ng-app="timerapp">
+    <div data-ng-controller="clock">
+        <label>timerLenght</label>
+        <input type="text" data-ng-model="timerLength">
+        <br>
+        <button data-ng-click="startTimer()">Start</button>
+    </div>
+</body>
+</html>
